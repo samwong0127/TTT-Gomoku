@@ -1,1 +1,1 @@
-# TTT-Gomoku
+# Tic-Tac-Toe & Gomoku
