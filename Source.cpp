@@ -6,7 +6,7 @@
 /*
 
 	A Tic-Tac-Toe game which can be transformed to a Gomoku (Five-in-a-row) game
-	Because the game ending state is not checked by hard codes e.g. board[0][0] == board[0][1] = board[0][0]
+	Because the game ending state is not checked by hard codes e.g. board[0][0] == board[0][1] = board[0][2]
 	
 	Future plan: A Gomoku can be formed by Changing the BOARD_SIZE and WINNING_MATCHES to 15 and 5 respectively
 
@@ -24,9 +24,9 @@ private:
 	char gameBoard[BOARD_SIZE][BOARD_SIZE];
 	bool gameTie;
 	Player currentPlayer;
-	//int lastRow, lastCol;
 	int maxMoves;
 	int winningMatches = WINNING_MATCHES;
+	string borders;
 
 public:
 	Game() {
@@ -41,6 +41,11 @@ public:
 		//lastRow = 0;
 		//lastCol = 0;
 		gameTie = false;
+
+		borders = "";
+		for (int i = 0; i < BOARD_SIZE; i++) {
+			borders += "- - ";
+		}
 
 		
 	}
@@ -59,10 +64,17 @@ public:
 	*/
 
 	void printBoard() {
-		cout << "\n    0   1   2   \n";
-		cout << "  - - - - - - -\n";
+		cout << "\n    ";
 		for (int i = 0; i < BOARD_SIZE; i++) {
-			cout << i << " | ";
+			//cout << i << "   ";
+			printf("%2d  ", i);
+		}
+		cout << "\n   " << borders << "-\n";
+		//cout << "- - - - - - -\n";
+		
+		for (int i = 0; i < BOARD_SIZE; i++) {
+			//cout << i << " | ";
+			printf("%2d | ", i);
 			for (int j = 0; j < BOARD_SIZE; j++) {
 				// Color changing; Needs <windows.h>
 				/* 
@@ -78,10 +90,10 @@ public:
 				*/
 				cout << gameBoard[i][j] << " | ";
 			}
-			cout << "\n  - - - - - - -";
-			cout << endl;
+			cout << "\n   " << borders << "-\n";
+			
 		}
-		
+		cout << endl;
 	}
 
 	// Place the moves
@@ -383,7 +395,7 @@ public:
 
 	bool validMove(int row, int col) {
 
-		if (row > 2 || col > 2 || row < 0 || col < 0) {
+		if (row >= BOARD_SIZE || col >= BOARD_SIZE || row < 0 || col < 0) {
 			return false;
 		}
 		
