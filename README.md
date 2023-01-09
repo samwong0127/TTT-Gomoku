@@ -6,4 +6,4 @@ The Tic-Tac-Toe game functionality is tested manually but not for Gomoku. You ca
 
 Future Improvements:
 1. Let player choose what to play instead of changing the hard coded board size and winning matches
-2. Build a Gomoku class and a TicTacToe class by inheritance  
+2. Develop a *Gomoku* class and a *TicTacToe* class by inheritance based on the *Game* class
